@@ -1,7 +1,7 @@
 provider "aws" {
   profile = "default"
   version = "~> 2.70"
-  region  = "us-east-1"
+  region  = var.region
 }
 
 resource "aws_instance" "myEc2" {
@@ -11,8 +11,13 @@ resource "aws_instance" "myEc2" {
   subnet_id     = aws_subnet.public_subnet.id
   associate_public_ip_address = true
 
+  locals {
+  webserver_name = "Web Server"
+  }
+  
+  
   tags = {
-    Name = "Web Server " 
+    Name = local.webser_name
   }
 
   
