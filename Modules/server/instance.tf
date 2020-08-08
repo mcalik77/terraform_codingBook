@@ -1,10 +1,11 @@
 provider "aws" {
   profile = "default"
+  version = "~> 2.70"
   region  = var.region
 }
 
 locals {
-  webserver_name = "Web Server 2"
+  webserver_name = "Web Server"
   }
 
 resource "aws_instance" "myEc2" {
@@ -18,6 +19,8 @@ resource "aws_instance" "myEc2" {
   tags = {
     Name = local.webserver_name
   }
+
+  
 
   connection { 
     type = "ssh"
@@ -35,8 +38,4 @@ resource "aws_instance" "myEc2" {
    ] 
  }
 
- }
-
- output "webserver_ip"{
-   value = aws_instance.myEc2.public_ip
  }
