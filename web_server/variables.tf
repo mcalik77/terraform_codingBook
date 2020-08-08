@@ -1,7 +1,4 @@
 variable "ami_name" {
-    default = "ami-2757f631"
-    type    = string 
-    description = "This will be defining your ami"
   }
 
   variable "instance_type" {
@@ -12,9 +9,7 @@ variable "ami_name" {
 
   variable "key_name" {}
 
-    variable "region" {
-        default = "us-east-1"
-    }
+  variable "region" {}
 
   variable "user_name" {}
   
