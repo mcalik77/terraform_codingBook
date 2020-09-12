@@ -15,7 +15,7 @@ pipeline {
   stages {
     stage('Terraform Init') {
       steps {
-        
+        sh 'terraform --version'
         sh "${env.WORKSPACE/web_server}/terraform init -input=false"
       }
     }
