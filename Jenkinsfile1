@@ -15,20 +15,14 @@ pipeline {
   stages {
     stage('Terraform Init') {
       steps {
-        sh 'terraform --version'
-        sh "${env.WORKSPACE}/web_server/terraform init -input=false"
+        sh '''
+        terraform --version
+        terraform init -no-color
+        terraform apply -auto-approve -var-file="dev.tfvars"
+        '''
+        
       }
     }
-    stage('Terraform Plan') {
-      steps {
-        sh "${env.WORKSPACE}/web_server/terraform plan -out=tfplan -input=false -var-file='dev.tfvars'"
-      }
-    }
-    stage('Terraform Apply') {
-      steps {
-        input 'Apply Plan'
-        sh "${env.WORKSPACE}/web_server/terraform apply -input=false tfplan"
-      }
-    }
+    
   }
 }

@@ -1,6 +1,6 @@
 pipeline {
   
-  agent any 
+  agent any
   
   stages {
     
@@ -9,7 +9,6 @@ pipeline {
       steps {
         
         echo 'building the application'
-        echo 'testing webhook'
         
       }
     }
