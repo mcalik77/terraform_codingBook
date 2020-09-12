@@ -31,10 +31,9 @@ resource "aws_instance" "myEc2" {
   provisioner "remote-exec" {
      inline = [ 
         "sudo yum update -y", 
-        "sudo amazon-linux-extras install nginx1.12 -y",
-        "sudo chkconfig nginx on",
-        "sudo systemctl start nginx",
-        "sudo systemctl enable nginx"
+        "sudo yum install docker -y",
+        "sudo service docker start",
+        "sudo usermod -a -G docker ec2-user"
    ] 
  }
 

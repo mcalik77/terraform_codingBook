@@ -5,8 +5,8 @@ provider "aws" {
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
-  bucket = "my-s3-bucket-mcalik007"
-  acl    = "private"
+  bucket = var.bucket_name
+  acl    = var.acl
 
   versioning = {
     enabled = true
@@ -14,16 +14,16 @@ module "s3_bucket" {
 
 }
 
-# module "web_server" {
+module "web_server" {
 
-# source = "../server/"
+source = "../server/"
 
-#     key_name          = var.key_name
-#     region            = var.region
-#     user_name         = var.user_name
-#     cidr_block        = var.cidr_block
-#     cidr_block_subnet = var.cidr_block_subnet
-#     ami_name          = var.ami_name
-#     instance_type     = var.instance_type
+    key_name          = var.key_name
+    region            = var.region
+    user_name         = var.user_name
+    cidr_block        = var.cidr_block
+    cidr_block_subnet = var.cidr_block_subnet
+    ami_name          = var.ami_name
+    instance_type     = var.instance_type
 
-# }
+}
