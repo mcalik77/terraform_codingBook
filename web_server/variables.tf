@@ -7,11 +7,11 @@ variable "ami_name" {
     description = "This will be instance type"
   }
 
-  variable "key_name" {}
+  #variable "key_name" {}
 
   variable "region" {}
 
-  variable "user_name" {}
+  #variable "user_name" {}
   
   variable "cidr_block" {}
 
