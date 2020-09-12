@@ -15,18 +15,19 @@ pipeline {
   stages {
     stage('Terraform Init') {
       steps {
-        sh "web_server/terraform init -input=false"
+        
+        sh "${env.WORKSPACE/web_server} terraform init -input=false"
       }
     }
     stage('Terraform Plan') {
       steps {
-        sh "web_server/terraform plan -out=tfplan -input=false -var-file='dev.tfvars'"
+        sh "${env.WORKSPACE/web_server} terraform plan -out=tfplan -input=false -var-file='dev.tfvars'"
       }
     }
     stage('Terraform Apply') {
       steps {
         input 'Apply Plan'
-        sh "web_server/terraform apply -input=false tfplan"
+        sh "${env.WORKSPACE/web_server} web_server/terraform apply -input=false tfplan"
       }
     }
   }
