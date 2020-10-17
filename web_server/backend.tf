@@ -2,6 +2,6 @@
  	backend "s3" {
  		bucket = "mcalikterraform"
  		key    = "terraform/terraform.tfstate"
- 		region = var.region
+ 		region = "us-east-1"
  	}
  }
